@@ -1,0 +1,7 @@
+{
+  "name": "BudgetTrackerFE",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
