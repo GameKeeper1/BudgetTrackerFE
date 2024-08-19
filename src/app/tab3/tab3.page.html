@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 3
+      Budget Tracker
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,9 +9,56 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
+      <!-- <ion-title size="large">Budget Calculator</ion-title> -->
     </ion-toolbar>
+  
+  <app-explore-container name="Tab 3 page"></app-explore-container>
   </ion-header>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+
+<form [formGroup]="budgetForm1" (ngSubmit)="onSubmit()"> 
+<ion-grid>
+     <ion-row>
+      <h1> Daily Expenses</h1>
+     </ion-row>
+  
+
+    <!-- div containor for adding button for daily expenses Inputs -->
+  <div formArrayName="dailyexpenses">
+    <ion-row *ngFor ="let dailyexpense of dailyexpenses.controls; let i = index" [formGroupName]="i">          
+           
+     <ion-col>
+        <input type="text" formControlName="description" placeholder="daily expense description"  >
+     </ion-col>
+
+     <ion-col>
+      <input type="number" formControlName="dexpense" placeholder="daily expense">
+     </ion-col>
+
+     <ion-col>  
+        <ion-button size="small" type="button" (click)=" removeDailyExpense(i)">Remove</ion-button>
+     </ion-col> 
+
+    </ion-row>     
+      
+    <ion-row>
+      <ion-button type="button" (click)="addDailyExpense()">Add Income</ion-button>   
+    </ion-row>
+
+  </div>
+    
+   
+    <ion-row>
+      <ion-button type="submit"> Submit</ion-button>
+    </ion-row>
+</ion-grid>
+</form>
+
+ <!-- FAB button that contains the alerts-->
+    <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+      <ion-fab-button>
+        <ion-icon name="help-outline"(click)="AlertDashboard1()"></ion-icon>
+      </ion-fab-button>
+     
+</ion-fab>
 </ion-content>
